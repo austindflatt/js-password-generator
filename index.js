@@ -1,3 +1,11 @@
+
+const randomFunc = {
+    lower: generateRandLower,
+    upper: generateRandUpper,
+    number: generateRandNumber,
+    symbol: generateRandSymbol
+}
+
 // Generator functions 
 
 function generateRandLower() {
@@ -14,7 +22,5 @@ function generateRandNumber() {
 
 function generateRandSymbol() {
     const symbols = '!@#$%&*(){}[]'
-    return symbols;
+    return symbols[Math.floor(Math.random() * symbols.length)]
 }
-
-console.log(generateRandNumber());
