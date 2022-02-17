@@ -42,18 +42,26 @@ function generatePassword(lower, upper, number, symbol, length) {
 
     let generatedPassword = '';
     const typesCount = lower + upper + number + symbol;
-    console.log('types count', typesCount);
 
     const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter
     (
         item => Object.values(item)[0]
     );
 
-    console.log('types array', typesArr);
-
     if(typesCount === 0) {
         return '';
     }
+
+    for(i = 0; i < length; i += typesCount){
+        typesArr.forEach(type => {
+            const functionName = Object.keys(type)[0];
+            // console.log({functionName})
+
+            generatedPassword += randomFunc[functionName]();
+        })
+    }
+    const passwordOutput = generatedPassword.slice(0, length);
+    return passwordOutput;
 }
 
 // Generator functions | https://net-comber.com/charset.html
